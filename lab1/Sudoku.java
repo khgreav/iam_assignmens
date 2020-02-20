@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
 
 /* author: xhanak34
@@ -45,13 +47,6 @@ public class Sudoku {
         while (in.hasNextLine()) { //read stdin
             String[] tokens = in.nextLine().split(" ");
             c[Integer.parseInt(tokens[0])-1][Integer.parseInt(tokens[1])-1] = Integer.parseInt(tokens[2]);
-        }
-
-        for (i = 0; i < n; i++){
-            for (j = 0; j < n; j++) {
-                System.out.print(c[i][j]+" ");
-            }
-            System.out.print("\n");
         }
 
         for (i = 0; i < n; i++) {
@@ -120,6 +115,11 @@ public class Sudoku {
             }
         }
 
-        System.out.print(sb.toString());
+        StringBuilder rd = new StringBuilder(); //remove duplicates
+        for (String line: new LinkedHashSet<String>(Arrays.asList(sb.toString().split("\n")))) {
+            rd.append(line+"\n");
+        }
+
+        System.out.print(rd.toString());
     }
 }
